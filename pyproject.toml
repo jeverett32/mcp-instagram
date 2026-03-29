@@ -1,0 +1,18 @@
+[project]
+name = "mcp-instagram"
+version = "1.0.0"
+description = "MCP server to fetch public Instagram profiles, posts, and images"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "curl-cffi>=0.7.0",
+]
+
+[project.scripts]
+mcp-instagram = "server:run_server"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
