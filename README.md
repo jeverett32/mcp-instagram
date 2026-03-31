@@ -8,6 +8,7 @@ An MCP (Model Context Protocol) server that fetches public Instagram profiles, p
 |------|-------------|
 | `get_profile` | Profile info: bio, followers, profile pic (HD), category, verification status |
 | `get_posts` | Recent posts with captions, likes, comments, dates, and full carousel support |
+| `get_posts_paged` | Recent posts **with pagination** (beyond the ~12 returned by profile preview). Returns `next_max_id` cursor |
 | `get_post_images` | Flat list of HD image URLs from recent posts (skips videos) |
 
 All tools accept a **username** (`natgeo`), an **@handle** (`@natgeo`), or a **full URL** (`https://instagram.com/natgeo`).
@@ -84,6 +85,21 @@ Then use in Claude Code:
     "https://scontent-...",
     "https://scontent-...",
     "https://scontent-..."
+  ]
+}
+```
+
+### `get_posts_paged("natgeo", limit=36)`
+
+```json
+{
+  "username": "natgeo",
+  "returned": 36,
+  "next_max_id": "QVFD...",
+  "more_available": true,
+  "pages_fetched": 3,
+  "posts": [
+    { "id": "C0KMCH4vzHJ", "caption": "...", "likes": 123, "comments": 4, "date": "2026-01-01 12:34" }
   ]
 }
 ```
